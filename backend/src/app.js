@@ -13,4 +13,10 @@ app.listen(appPort, () => {
     console.log(`App server is running on port : ${appPort}`)
 })
 
+
+//routes
+import userRoutes from "./routes/user.routes.js";
+
+app.use("/api/v1/user", userRoutes)
+
 export { app };
