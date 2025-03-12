@@ -1,11 +1,11 @@
 import { Router } from "express";
-import verifyJwt from "../middlewares/auth.middleware.js";
+import { verifyJwt } from "../middlewares/auth.middleware.js";
 import { forgotPassword,
          loginUser,
          logoutUser,
          registerUser, 
          resetPassword, 
-         updateAccessToken} from "../controllers/user.controllers.js";
+         updateAccessToken } from "../controllers/user.controllers.js";
 
 
 const router = Router()

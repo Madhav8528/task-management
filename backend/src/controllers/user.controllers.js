@@ -36,14 +36,14 @@ const generateAccessAndRefreshTokens = async (userId) => {
     }
 }
 
-
+//testing = Done(Success)
 const registerUser = asyncHandler( async (req, res) => {
     
-    const { username, name, email, password, confirmPassword, otp } = req.body
+    const { username, name, email, password, confirmPassword , otp} = req.body
 
     if(!otp){
-
-        if([username, name, email, password, confirmPassword].some((fields) => fields.trim() === "")){
+        //console.log(username)
+        if([username, name, email, password, confirmPassword].some((fields) => { return fields.trim() === "" })){
             throw new ApiError(400, "Please provide all the details")
         }
 
@@ -62,7 +62,7 @@ const registerUser = asyncHandler( async (req, res) => {
         throw new ApiError(400, "Password and confirmPassword field does'nt match.")
     }
 
-    const existedUser = await User.find({
+    const existedUser = await User.findOne({
         $or : [{email}, {username}]
     })
     if(existedUser){
@@ -92,7 +92,7 @@ const registerUser = asyncHandler( async (req, res) => {
         }
     })
 
-    const email = await transporter.sendMail({
+    const otpEmail = await transporter.sendMail({
         from : "madhavv8528@gmail.com",
         to : email,
         subject : "Otp verification for Task Mangement App",
@@ -129,7 +129,7 @@ const registerUser = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, createdUser, "User has successfullly registered.") )
 })
 
-
+//testing = Done(Success)
 const loginUser = asyncHandler( async (req, res) => {
     
     const { email, password } = req.body
@@ -173,7 +173,7 @@ const loginUser = asyncHandler( async (req, res) => {
    .json( new ApiResponse(200, loggedInUser, "User logged in successfully"))
 })
 
-
+//testing = Done(Success)
 const logoutUser = asyncHandler( async (req, res) => {
     
     await User.findByIdAndUpdate(
@@ -195,10 +195,10 @@ const logoutUser = asyncHandler( async (req, res) => {
     return res.status(200)
     .clearCookie("AccessToken", options)
     .clearCookie("RefreshToken", options)
-    .json( new apiResponse(200, "User logged out successfully"))
+    .json( new ApiResponse(200, "User logged out successfully"))
 })
 
-
+//testing = Done(Success)
 const updateAccessToken = asyncHandler( async (req, res) => {
     
     const token = req.cookies?.refreshToken
@@ -233,7 +233,7 @@ const updateAccessToken = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, {accessToken, refreshToken}, "New access token has been generated."))
 })
 
-
+//testing = Done(Success)
 const forgotPassword = asyncHandler( async (req, res) => {
     
     const { email } = req.body
@@ -273,7 +273,7 @@ const forgotPassword = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, recoveryEmail.body, "Recovery email sent successfully."))
 })
 
-
+//testing = Done(Success)
 const resetPassword = asyncHandler( async (req, res) => {
     
     const { token } = req.params
@@ -287,12 +287,15 @@ const resetPassword = asyncHandler( async (req, res) => {
     if(!decodedToken){
         throw new ApiError(500, "Something went wrong while decoding token.")
     }
-
-    const user = await User.find(decodedToken.email)
+    const userEmail = decodedToken.email
+    //console.log(userEmail);
+    
+    const user = await User.findOne({email : userEmail})
     if(!user){
         throw new ApiError(401, "No account found with the following email.")
     }
-
+    //console.log(user);
+    
     if(password !== confirmPassword){
         throw new ApiError(400, "Password does'nt match with confirm password, kindly check.")
     }
