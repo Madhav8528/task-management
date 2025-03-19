@@ -1,0 +1,485 @@
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.dashboard-nav {
+  width: 250px;
+  background-color: #626F47;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-nav a {
+  color: #FEFAE0;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-nav a:hover {
+  background-color: #A4B465;
+  transform: translateX(5px);
+}
+
+.dashboard-nav button {
+  padding: 0.75rem 1rem;
+  margin-top: auto;
+  background-color: #FFCF50;
+  color: #626F47;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-nav button:hover {
+  background-color: #A4B465;
+  transform: translateX(5px);
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #FEFAE0;
+  overflow-y: auto;
+}
+
+
+
+.deadline-tracking-container {
+  padding: 2rem;
+  background-color: #FEFAE0;
+  min-height: calc(100vh - 4rem);
+  font-family: 'Roboto', sans-serif;
+}
+
+.dt-heading {
+  font-size: 2rem;
+  color: #3A3960; 
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.dt-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #5E686D;
+  margin-bottom: 2rem;
+}
+
+.dt-form {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  background-color: #FFCF50;
+  border: 1px solid #A4B465;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.dt-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.dt-form label {
+  display: block;
+  font-weight: 500;
+  color: #3A3960;
+  margin-bottom: 0.3rem;
+}
+
+.dt-form input[type="text"],
+.dt-form input[type="date"],
+.dt-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #A4B465;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.dt-form input[type="text"]:focus,
+.dt-form input[type="date"]:focus,
+.dt-form select:focus {
+  border-color: #626F47;
+}
+
+.dt-error {
+  color: #e74c3c;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.dt-add-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #A4B465;
+  color: #FEFAE0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dt-add-btn:hover {
+  background-color: #626F47;
+  transform: scale(1.02);
+}
+
+/* Deadline Tracking Table */
+.dt-table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.dt-table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.dt-table th,
+.dt-table td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.dt-table th {
+  background-color: #A4B465;
+  color: #FEFAE0;
+}
+
+.dt-table-row {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dt-table-row:hover {
+  transform: scale(1.01);
+}
+
+.dt-table-row.overdue {
+  background-color: #ffcccc;
+}
+
+.dt-table-row.on-time {
+  background-color: #ccffcc;
+}
+
+.dt-delete-btn {
+  padding: 0.5rem 1rem;
+  background-color: #FFCF50;
+  color: #3A3960;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dt-delete-btn:hover {
+  background-color: #A4B465;
+  transform: scale(1.05);
+}
+
+.dt-no-tasks {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #3A3960;
+  margin-top: 2rem;
+}
+
+
+.dashboard-section {
+  padding: 2rem;
+  background-color: #FEFAE0;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  border: 1px solid #A4B465;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #FEFAE0;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background-color: #A4B465;
+  color: #FEFAE0;
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-form {
+  display: flex;
+  border-top: 1px solid #A4B465;
+}
+
+.chat-form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.chat-form button {
+  padding: 0.75rem 1rem;
+  background-color: #626F47;
+  color: #FEFAE0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-form button:hover {
+  background-color: #A4B465;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .dashboard-nav {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+  .dashboard-nav a {
+    margin: 0 0.5rem 0 0;
+    padding: 0.5rem 1rem;
+  }
+  .dashboard-nav button {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .dashboard-content {
+    padding: 1rem;
+  }
+  .dt-form {
+    padding: 0.75rem;
+  }
+  .dt-table th,
+  .dt-table td {
+    padding: 0.5rem;
+  }
+}
+
+.dashboard-section {
+  padding: 2rem;
+  background-color: #FEFAE0;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  border: 1px solid #A4B465;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #FEFAE0;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background-color: #A4B465; 
+  color: #FEFAE0;           
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.chat-message.my-message {
+  background-color: #FFCF50; 
+  color: #626F47;            
+}
+
+
+.chat-form {
+  display: flex;
+  border-top: 1px solid #A4B465;
+}
+
+.chat-form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.chat-form button {
+  padding: 0.75rem 1rem;
+  background-color: #626F47;
+  color: #FEFAE0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-form button:hover {
+  background-color: #A4B465;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;  
+  background-color: #FEFAE0; 
+  border-radius: 8px;
+  margin: 2rem auto;  
+  max-width: 600px;   
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.dashboard-section h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;  
+  color: #3A3960; 
+  font-size: 2.2rem;
+}
+
+
+.dashboard-form {
+  width: 100%;
+  padding: 2rem;
+  background-color: #FFCF50; 
+  border: 1px solid #A4B465;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+  margin-bottom: 2rem;
+}
+
+
+.form-group {
+  margin-bottom: 1.5rem;  
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: #3A3960;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #A4B465;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus {
+  border-color: #626F47;
+}
+
+.dashboard-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #A4B465;
+  color: #FEFAE0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #626F47;
+  transform: scale(1.02);
+}
+
+.success-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #A4B465;
+  color: #FEFAE0;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
