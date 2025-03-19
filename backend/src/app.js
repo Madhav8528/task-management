@@ -14,14 +14,14 @@ app.use(express.urlencoded({ extended : true, limit : "20kb" }))
 
 const appPort = process.env.PORT || 8000
 app.listen(appPort, () => {
-
     console.log(`App server is running on port : ${appPort}`)
 })
 
-
 //routes
 import userRoutes from "./routes/user.routes.js";
+import taskRoutes from "./routes/task.routes.js";
 
 app.use("/api/v1/user", userRoutes)
+app.use("/api/v1/tasks", taskRoutes)
 
 export { app };
