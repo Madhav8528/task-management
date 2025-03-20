@@ -1,0 +1,87 @@
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #626F47; 
+}
+
+
+.auth-container {
+  width: 400px;
+  padding: 2rem;
+  background-color: #FEFAE0; 
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 2px solid #A4B465; 
+
+
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #626F47; 
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #626F47;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid #A4B465;
+  border-radius: 6px;
+  outline: none;
+  color: #626F47;
+  transition: border-color 0.3s ease;
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+  border-color: #626F47;
+}
+
+.auth-form button {
+  padding: 0.75rem;
+  background-color: #A4B465;
+  color: #FEFAE0;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+  background-color: #FFCF50; 
+}
+
+.error {
+  color: #FF0000; 
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

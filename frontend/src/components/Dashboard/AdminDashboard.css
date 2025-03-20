@@ -1,0 +1,314 @@
+
+.admin-dashboard {
+    background-color: #FFF0D1; 
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #3B3030; 
+  }
+  
+  .admin-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 2.5rem;
+    color: #3B3030;
+    border-bottom: 2px solid #664343; 
+    padding-bottom: 1rem;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  
+  .admin-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #795757; 
+    line-height: 1.6;
+  }
+  
+  
+  .manage-users-container {
+    background-color: #FFF0D1;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .manage-users-container h2 {
+    text-align: center;
+    color: #3B3030;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .manage-users-form {
+    background-color: #FFF0D1;
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #664343;
+  }
+  
+  .manage-users-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #3B3030;
+    font-weight: 500;
+  }
+  
+  .manage-users-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #664343;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: #3B3030;
+    background-color: #FFF0D1;
+  }
+  
+  .manage-users-form input:focus {
+    border-color: #3B3030;
+  }
+  
+  .manage-users-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #795757;
+    color: #FFF0D1;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .manage-users-form button:hover {
+    background-color: #664343;
+    transform: scale(1.02);
+  }
+  
+  .manage-users-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .manage-users-list li {
+    background-color: #FFF0D1;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #664343;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .manage-users-list li:hover {
+    transform: scale(1.01);
+  }
+  
+  .manage-users-list li strong {
+    color: #3B3030;
+  }
+  
+  .manage-users-list li button {
+    padding: 0.5rem 1rem;
+    background-color: #795757;
+    color: #FFF0D1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .manage-users-list li button:hover {
+    background-color: #664343;
+    transform: scale(1.05);
+  }
+  
+  
+.manage-tasks-container {
+    background-color: #FFF0D1; 
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .manage-tasks-container h2 {
+    text-align: center;
+    color: #3B3030;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+  }
+  
+  .manage-tasks-form {
+    background-color: #FFF0D1;
+    padding: 1.5rem;
+    border: 1px solid #664343;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .manage-tasks-form .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .manage-tasks-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #3B3030;
+  }
+  
+  .manage-tasks-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #664343;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: #3B3030;
+    background-color: #FFF0D1;
+  }
+  
+  .manage-tasks-form input:focus {
+    border-color: #3B3030;
+  }
+  
+  .manage-tasks-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #795757;
+    color: #FFF0D1;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .manage-tasks-form button:hover {
+    background-color: #664343;
+    transform: scale(1.02);
+  }
+  
+  .manage-tasks-table-container {
+    overflow-x: auto;
+    margin: 0 auto;
+  }
+  
+  .manage-tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .manage-tasks-table th,
+  .manage-tasks-table td {
+    padding: 0.75rem;
+    border: 1px solid #664343;
+    text-align: left;
+  }
+  
+  .manage-tasks-table th {
+    background-color: #795757;
+    color: #FFF0D1;
+  }
+  
+  .manage-tasks-table-row {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .manage-tasks-table-row:hover {
+    transform: scale(1.01);
+  }
+  
+  .manage-tasks-table-row button {
+    padding: 0.5rem 1rem;
+    background-color: #795757;
+    color: #FFF0D1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .manage-tasks-table-row button:hover {
+    background-color: #664343;
+    transform: scale(1.05);
+  }
+  
+  .status-select {
+    background-color: #FFF0D1; 
+    border: 1px solid #664343;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    color: #3B3030;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .status-select:hover {
+    border-color: #3B3030;
+  }
+  
+  .status-select:focus {
+    outline: none;
+    border-color: #3B3030;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.admin-dashboard {
+  text-align: center;
+  padding: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  color: #3B3030;
+  margin-bottom: 1rem;
+}
+
+.admin-content {
+  font-size: 1.2rem;
+  color: #3B3030;
+  margin-bottom: 2rem;
+}
+
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+    
