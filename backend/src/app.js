@@ -21,7 +21,9 @@ app.listen(appPort, () => {
 
 //routes
 import userRoutes from "./routes/user.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 
 app.use("/api/v1/user", userRoutes)
+app.use("/api/v1/admin", adminRoutes)
 
 export { app };

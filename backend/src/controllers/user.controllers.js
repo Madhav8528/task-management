@@ -41,12 +41,14 @@ const registerUser = asyncHandler( async (req, res) => {
     
     const { username, name, email, password, confirmPassword , otp} = req.body
 
+    console.log(username, name, email, password);
+    
     if(!otp){
         //console.log(username)
         if([username, name, email, password, confirmPassword].some((fields) => { return fields.trim() === "" })){
             throw new ApiError(400, "Please provide all the details")
         }
-
+        
     //regex include check of @, dot
     const emailRegex = /^(?!\.)[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if(emailRegex.test(email)===false){
@@ -54,14 +56,14 @@ const registerUser = asyncHandler( async (req, res) => {
     }
     //include one uppercase, special character and a number
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-    if(passwordRegex.test(password)===false){
+    if(!passwordRegex.test(password)){
         throw new ApiError(400, "Please provide a password with atleast a Uppercase, a special character and a number")
     }
     
     if(password !== confirmPassword){
         throw new ApiError(400, "Password and confirmPassword field does'nt match.")
     }
-
+    
     const existedUser = await User.findOne({
         $or : [{email}, {username}]
     })
@@ -75,7 +77,7 @@ const registerUser = asyncHandler( async (req, res) => {
                   lowerCaseAlphabets : false,
                   specialChars : false
     })
-
+    
     const OTP = await Otp.create({
         otp,
         email
@@ -106,13 +108,11 @@ const registerUser = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, email.body, "Otp has successfully sent to email, kindly validate") )
     }
 
-    const verifyOtp = await Otp.findOne( { 
-        $or : [{otp}, {email}]
-    })
+    const verifyOtp = await Otp.findOne({ otp })
     if(!verifyOtp){
         throw new ApiError(402, "Otp is not valid, please register again.")
     }
-
+    
     const user = await User.create({
         username,
         name,
@@ -167,10 +167,18 @@ const loginUser = asyncHandler( async (req, res) => {
         throw new ApiError(404, "Something went wrong while logging user.")
    }
 
+   if(user.role === "admin"){
+   return res.status(200)
+   .cookie("accessToken", accessToken, options)
+   .cookie("refreshToken", refreshToken, options)
+   .json( new ApiResponse(200, loggedInUser, "Admin logged in successfully"))
+   }
+
    return res.status(200)
    .cookie("accessToken", accessToken, options)
    .cookie("refreshToken", refreshToken, options)
    .json( new ApiResponse(200, loggedInUser, "User logged in successfully"))
+
 })
 
 //testing = Done(Success)
@@ -190,6 +198,13 @@ const logoutUser = asyncHandler( async (req, res) => {
     const options = {
         httpOnly : true,
         secure : true
+    }
+
+    if(req.user.role === "admin"){
+    return res.status(200)
+    .clearCookie("AccessToken", options)
+    .clearCookie("RefreshToken", options)
+    .json( new ApiResponse(200, "Admin logged out successfully"))
     }
 
     return res.status(200)
