@@ -3,6 +3,7 @@ import { ApiResponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { User } from "../models/user.model.js";
 import { isValidObjectId } from "mongoose";
+import { Task } from "../models/task.model.js";
 
 
 //use role middleware
@@ -71,10 +72,49 @@ const deleteUser = asyncHandler( async (req, res) => {
 
 })
 
+//change to username
+const getUserTasks = asyncHandler( async (req, res) => {
+    
+    const { userId } = req.params
+    if(!userId){
+        throw new ApiError(400, "Something went wrong with the url.")
+    }
+
+    const userTasks = await Task.find({
+        assignedTo : userId
+    })
+    if(!userTasks){
+        throw new ApiError(400, "No task found for the user.")
+    }
+
+    return res.status(200)
+    .json( new ApiResponse(200, userTasks, "User tasked fetched successfully.") )
+})
+
+
+const taskAssignedByUser = asyncHandler( async (req, res) => {
+    
+    const { userId } = req.params
+    if(!userId){
+        throw new ApiError(400, "Somrthing went wrong with the url.")
+    }
+
+    const assignedTasks = await Task.find({
+        assignedBy : userId
+    })
+    if(!assignedTasks){
+        throw new ApiError(400, "No task is assigned by this user.")
+    }
+
+    return res.status(200)
+    .json( new ApiResponse(200, assignedTasks, "Assigned tasks by user fetched successfully.") )
+})
 
 
 export { getAllUser,
          getNumberOfUser,
          getUser,
-         deleteUser
+         deleteUser,
+         getUserTasks,
+         taskAssignedByUser
        }

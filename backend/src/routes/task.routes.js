@@ -9,7 +9,7 @@ import {
     updateTask,
     deleteTask,
     assignTask
-} from "../controllers/task.controllers.js";
+} from "../controllers/task.controller.js";
 
 const router = Router();
 
