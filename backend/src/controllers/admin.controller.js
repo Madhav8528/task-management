@@ -72,7 +72,7 @@ const deleteUser = asyncHandler( async (req, res) => {
 
 })
 
-//change to username
+
 const getUserTasks = asyncHandler( async (req, res) => {
     
     const { userId } = req.params
@@ -80,8 +80,13 @@ const getUserTasks = asyncHandler( async (req, res) => {
         throw new ApiError(400, "Something went wrong with the url.")
     }
 
+    const user = await User.findById(userId)
+    if(!user){
+        throw new ApiError(400, "No user found with this userId.")
+    }
+
     const userTasks = await Task.find({
-        assignedTo : userId
+        assignedtoUsername : user.username
     })
     if(!userTasks){
         throw new ApiError(400, "No task found for the user.")
@@ -111,10 +116,44 @@ const taskAssignedByUser = asyncHandler( async (req, res) => {
 })
 
 
+const getTask = asyncHandler( async (req, res) => {
+
+    const { taskId } = req.params
+    if(!taskId){
+        throw new ApiError(400, "Somrthing went wrong with the url.")
+    }
+
+    const task = await Task.findById(taskId)
+    if(!task){
+        throw new ApiError(400, "Something went wrong while fetching task.")
+    }
+
+    return res.status(200)
+    .json( new ApiResponse(200, task, "Task fetched successfully.") )
+})
+
+
+const deleteUserTask = asyncHandler( async (req, res) => {
+    
+    const { taskId } = req.params
+    if(!taskId){
+        throw new ApiError(400, "Somrthing went wrong with the url.")
+    }
+
+    await Task.findByIdAndDelete(taskId)
+
+    return res.status(200)
+    .json( new ApiResponse(200, "Task deleted successfully.") )
+
+})
+
+
 export { getAllUser,
          getNumberOfUser,
          getUser,
          deleteUser,
          getUserTasks,
-         taskAssignedByUser
+         taskAssignedByUser,
+         getTask,
+         deleteUserTask
        }
