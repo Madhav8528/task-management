@@ -24,7 +24,6 @@ const taskSchema = new Schema({
     
     assignedtoUsername: {
         type: String,
-        required:true,
     },
     
     assignedBy: {

@@ -16,18 +16,17 @@ const router = Router();
 // All routes are protected with JWT authentication
 router.use(verifyJwt);
 
-// Create and get all tasks
-router.route("/")
-    .post(createTask)
-    .get(getAllTasks);
+//create a task
+router.route("/create-task").post(createTask)
+
+// get all tasks
+router.route("/").get(getAllTasks);
 
 // Get tasks assigned to the authenticated user
-router.route("/my-tasks")
-    .get(getMyTasks);
+router.route("/my-tasks").get(getMyTasks);
 
 // Get tasks created by the authenticated user
-router.route("/created-by-me")
-    .get(getTasksCreatedByMe);
+router.route("/task-created-by-me").get(getTasksCreatedByMe);
 
 // Get, update, and delete a specific task
 router.route("/:taskId")
@@ -36,7 +35,7 @@ router.route("/:taskId")
     .delete(deleteTask);
 
 // Assign a task to a user
-router.route("/:taskId/assign")
+router.route("/assign/:taskId")
     .post(assignTask);
 
 export default router;

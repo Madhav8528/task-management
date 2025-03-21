@@ -72,7 +72,7 @@ const deleteUser = asyncHandler( async (req, res) => {
 
 })
 
-
+//testing = Done(success)
 const getUserTasks = asyncHandler( async (req, res) => {
     
     const { userId } = req.params
@@ -88,7 +88,7 @@ const getUserTasks = asyncHandler( async (req, res) => {
     const userTasks = await Task.find({
         assignedtoUsername : user.username
     })
-    if(!userTasks){
+    if(userTasks.length === 0){
         throw new ApiError(400, "No task found for the user.")
     }
 
@@ -96,7 +96,7 @@ const getUserTasks = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, userTasks, "User tasked fetched successfully.") )
 })
 
-
+//testing = Done(success)
 const taskAssignedByUser = asyncHandler( async (req, res) => {
     
     const { userId } = req.params
@@ -107,7 +107,7 @@ const taskAssignedByUser = asyncHandler( async (req, res) => {
     const assignedTasks = await Task.find({
         assignedBy : userId
     })
-    if(!assignedTasks){
+    if(assignedTasks.length === 0){
         throw new ApiError(400, "No task is assigned by this user.")
     }
 
@@ -115,7 +115,7 @@ const taskAssignedByUser = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, assignedTasks, "Assigned tasks by user fetched successfully.") )
 })
 
-
+//testing = Done(success)
 const getTask = asyncHandler( async (req, res) => {
 
     const { taskId } = req.params
@@ -132,7 +132,7 @@ const getTask = asyncHandler( async (req, res) => {
     .json( new ApiResponse(200, task, "Task fetched successfully.") )
 })
 
-
+//testing = Done(success)
 const deleteUserTask = asyncHandler( async (req, res) => {
     
     const { taskId } = req.params
