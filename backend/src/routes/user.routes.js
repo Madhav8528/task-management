@@ -6,11 +6,12 @@ import { forgotPassword,
          registerUser, 
          resetPassword, 
          updateAccessToken } from "../controllers/user.controllers.js";
-
+import multer from "multer";
 
 const router = Router()
+const upload = multer()
 
-router.route("/register").post(registerUser)
+router.route("/register").post(upload.none(), registerUser)
 router.route("/login").post(loginUser)
 router.route("/logout").post(verifyJwt, logoutUser)
 router.route("/refresh-access-token").post(updateAccessToken)

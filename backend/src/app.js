@@ -1,21 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
+import cors from "cors";
 dotenv.config({
     path : "./.env"
 })
 
 const app = express()
 
-app.use(express.json({ limit : "20kb" }))
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+  }));
+app.use(express.json())
 app.use(cookieParser())
-app.use(express.urlencoded({ extended : true, limit : "20kb" }))
+app.use(express.urlencoded({ extended : true }))
 
-const appPort = process.env.PORT || 8000
-app.listen(appPort, () => {
-    console.log(`App server is running on port : ${appPort}`)
-})
 
 //routes
 import userRoutes from "./routes/user.routes.js";
