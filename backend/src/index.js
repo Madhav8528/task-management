@@ -4,20 +4,20 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 import socketController from "./controllers/socket.controller.js";
 
-
-const appPort = process.env.PORT || 8000
-app.listen(appPort, () => {
-    console.log(`App server is running on port : ${appPort}`)
-})
-
-//database connection of application
 db_connect();
 
-const server = createServer(app)
+const server = createServer(app);
 
 const io = new Server(server, {
-    cors: true,
+  cors: {
+    origin: "http://localhost:3000", 
+    methods: ["GET", "POST"],
+  },
 });
 
 socketController(io);
-  
+
+const appPort = process.env.PORT || 7240;
+server.listen(appPort, () => {
+  console.log(`Server is running with sockets on http://localhost:${appPort}`);
+});
