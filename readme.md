@@ -32,11 +32,4 @@ pnpm install
 nodemon index.js
 ```
 
-## ✨ Features
-
-- User login and registration  
-- Create, edit, and delete tasks  
-- Task status management (e.g., completed, pending)  
-- Responsive design
-
 
